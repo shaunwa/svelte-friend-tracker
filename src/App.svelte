@@ -1,30 +1,21 @@
-<script>
-	export let name;
-</script>
-
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<h1>Friend Tracker</h1>
+<img
+	src="images/my-profile-pic.png"
+	alt="Shaun smiling"
+	height="200" />
+<h2>My Profile</h2>
+<h3>Name</h3>
+<p>Shaun Wassell</p>
+<h3>Age</h3>
+<p>100</p>
+<h3>Bio</h3>
+<p>I like to program. I also like food.</p>
+<h3>Birthday</h3>
+<p>March 1</p>
+<h3>Interests</h3>
+<ul>
+	<li>Programming</li>
+	<li>Data Science</li>
+	<li>Gardening</li>
+	<li>Foreign Languages</li>
+</ul>
