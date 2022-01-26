@@ -1,21 +1,18 @@
 <h1>Friend Tracker</h1>
-<img
-	src="images/my-profile-pic.png"
-	alt="Shaun smiling"
-	height="200" />
-<h2>My Profile</h2>
-<h3>Name</h3>
-<p>Shaun Wassell</p>
-<h3>Age</h3>
-<p>100</p>
-<h3>Bio</h3>
-<p>I like to program. I also like food.</p>
-<h3>Birthday</h3>
-<p>March 1</p>
-<h3>Interests</h3>
-<ul>
-	<li>Programming</li>
-	<li>Data Science</li>
-	<li>Gardening</li>
-	<li>Foreign Languages</li>
-</ul>
+<WelcomeMessage name="Shaun" />
+<ProfileInfo person={person} />
+
+<script>
+import WelcomeMessage from './WelcomeMessage.svelte';
+import ProfileInfo from './ProfileInfo.svelte';
+
+let person = {
+	name: 'Shaun Wassell',
+	age: 120,
+	bio: 'I like to program. I also like food.',
+	birthday:  'March 1',
+	interests: ['Programming', 'Data Science', 'Gardening', 'Foreign Languages'],
+	imageSrc: 'images/my-profile-pic.png',
+	imageAlt: 'Shaun smiling',
+}
+</script>
