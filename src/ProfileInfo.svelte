@@ -1,8 +1,11 @@
-<img
-	src={person.imageSrc}
-	alt={person.imageAlt}
-	height="200" />
-<h2>My Profile</h2>
+<div class="profile-pic-container">
+	<div class="profile-pic-inner">
+		<img
+			class="profile-pic"
+			src={person.imageSrc}
+			alt={person.imageAlt} />
+	</div>
+</div>
 <h3>Name</h3>
 <p>{person.name}</p>
 <h3>Bio</h3>
@@ -21,5 +24,24 @@ export let person;
 <style>
 h3 {
     border-bottom: 1px dotted #ccc;
+}
+
+.profile-pic-container {
+	display: flex;
+	justify-content: center;
+}
+
+.profile-pic-inner {
+	height: 256px;
+	width: 256px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: #aaa;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.profile-pic {
+	width: 100%;
 }
 </style>

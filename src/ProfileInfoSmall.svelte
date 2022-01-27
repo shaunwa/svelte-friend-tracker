@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="profile-pic-left">
+        <div class="profile-pic-wrap">
+            <img
+                class="profile-pic"
+                src={person.imageSrc}
+                alt={person.imageAlt} />
+        </div>
+    </div>
+    <div class="details-container">
+        <h3>Name</h3>
+        <p>{person.name}</p>
+        <h3>Age</h3>
+        <p>{person.age}</p>
+    </div>
+</div>
+
+<script>
+export let person;
+</script>
+
+<style>
+    .container {
+        display: flex;
+    }
+
+    .profile-pic-left {
+        align-items: center;
+        flex: 1;
+        display: flex;
+    }
+
+    .profile-pic-wrap {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #aaa;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .profile-pic {
+        width: 100%;
+    }
+
+    .details-container {
+        padding-left: 16px;
+        flex: 1;
+    }
+</style>
