@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container" on:click={containerClicked}>
     <div class="profile-pic-left">
         <div class="profile-pic-wrap">
             <img
+                on:click|stopPropagation={imageClicked}
                 class="profile-pic"
                 src={person.imageSrc}
                 alt={person.imageAlt} />
@@ -17,6 +18,14 @@
 
 <script>
 export let person;
+
+function containerClicked() {
+    alert('You clicked the container');
+}
+
+function imageClicked() {
+    alert('You clicked the image');
+}
 </script>
 
 <style>

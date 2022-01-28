@@ -5,17 +5,23 @@
     <div class="people-list">
         <div class="grid-item">
             <div class="card-container">
-                <ProfileInfoSmall person={friendsData[0]} />
+                <ProfileInfoSmall
+                    person={friendsData[0]}
+                    on:mouseenter={() => sayHelloTo(friendsData[0])} />
             </div>
         </div>
         <div class="grid-item">
             <div class="card-container">
-                <ProfileInfoSmall person={friendsData[1]} />
+                <ProfileInfoSmall
+                    person={friendsData[1]}
+                    on:mouseenter={() => sayHelloTo(friendsData[1])} />
             </div>
         </div>
         <div class="grid-item">
             <div class="card-container">
-                <ProfileInfoSmall person={friendsData[2]} />
+                <ProfileInfoSmall
+                    person={friendsData[2]}
+                    on:mouseenter={() => sayHelloTo(friendsData[2])} />
             </div>
         </div>
     </div>
@@ -26,6 +32,14 @@ import WelcomeMessage from './WelcomeMessage.svelte';
 import ProfileInfo from './ProfileInfo.svelte';
 import { myProfileData, friendsData } from './data';
 import ProfileInfoSmall from './ProfileInfoSmall.svelte';
+
+function sayHello() {
+    alert('Hello everyone!');
+}
+
+function sayHelloTo(person) {
+    alert(`Hello ${person.name}`);
+}
 </script>
 
 <style>
