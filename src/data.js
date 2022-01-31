@@ -1,4 +1,5 @@
 export const myProfileData = {
+    id: '012',
 	name: 'Shaun Wassell',
 	age: 120,
 	bio: 'I like to program. I also like food.',
@@ -9,6 +10,7 @@ export const myProfileData = {
 }
 
 export const friendsData = [{
+    id: '123',
     name: 'Sue Walker',
     age: 55,
     bio: 'Likes to travel to far-away places',
@@ -17,6 +19,7 @@ export const friendsData = [{
     imageSrc: 'images/friend-1.jpeg',
     imageAlt: 'Sue smiling',
 }, {
+    id: '234',
     name: 'Neil Kelly',
     age: 35,
     bio: 'Loves everything related to math',
@@ -25,6 +28,7 @@ export const friendsData = [{
     imageSrc: 'images/friend-2.jpeg',
     imageAlt: 'Neil smiling',
 }, {
+    id: '345',
     name: 'Donald Wilson',
     age: 28,
     bio: 'An all-around foodie, loves to cook and eat',

@@ -3,43 +3,15 @@
     <WelcomeMessage name="Shaun" />
     <ProfileInfo person={myProfileData} />
     <div class="people-list">
-        <div class="grid-item">
-            <div class="card-container">
-                <ProfileInfoSmall
-                    person={friendsData[0]}
-                    on:mouseenter={() => sayHelloTo(friendsData[0])} />
-            </div>
-        </div>
-        <div class="grid-item">
-            <div class="card-container">
-                <ProfileInfoSmall
-                    person={friendsData[1]}
-                    on:mouseenter={() => sayHelloTo(friendsData[1])} />
-            </div>
-        </div>
-        <div class="grid-item">
-            <div class="card-container">
-                <ProfileInfoSmall
-                    person={friendsData[2]}
-                    on:mouseenter={() => sayHelloTo(friendsData[2])} />
-            </div>
-        </div>
+        <PeopleList people={friendsData} />
     </div>
 </div>
 
 <script>
 import WelcomeMessage from './WelcomeMessage.svelte';
 import ProfileInfo from './ProfileInfo.svelte';
+import PeopleList from './PeopleList.svelte';
 import { myProfileData, friendsData } from './data';
-import ProfileInfoSmall from './ProfileInfoSmall.svelte';
-
-function sayHello() {
-    alert('Hello everyone!');
-}
-
-function sayHelloTo(person) {
-    alert(`Hello ${person.name}`);
-}
 </script>
 
 <style>
@@ -51,19 +23,5 @@ function sayHelloTo(person) {
 .people-list {
     display: flex;
     flex-wrap: wrap;
-}
-
-.grid-item {
-    box-sizing: border-box;
-    padding: 8px;
-    width: 50%;
-}
-
-.card-container {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin: auto;
-    max-width: 800px;
-    padding: 16px;
 }
 </style>
