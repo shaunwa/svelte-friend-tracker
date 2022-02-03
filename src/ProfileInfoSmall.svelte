@@ -1,11 +1,9 @@
 <div class="container" on:click>
     <div class="profile-pic-left">
-        <div class="profile-pic-wrap">
-            <img
-                class="profile-pic"
-                src={person.imageSrc}
-                alt={person.imageAlt} />
-        </div>
+        <ProfilePic
+            imageSrc={person.imageSrc}
+            imageAlt={person.imageAlt}
+            size="150px" />
     </div>
     <div class="details-container">
         <h3>Name</h3>
@@ -16,6 +14,8 @@
 </div>
 
 <script>
+import ProfilePic from './ProfilePic.svelte';
+
 export let person;
 </script>
 
@@ -28,20 +28,6 @@ export let person;
         align-items: center;
         flex: 1;
         display: flex;
-    }
-
-    .profile-pic-wrap {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        overflow: hidden;
-        background-color: #aaa;
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .profile-pic {
-        width: 100%;
     }
 
     .details-container {
