@@ -7,13 +7,16 @@
     </div>
     <div class="details-container">
         <h3>Name</h3>
-        <p>{person.name}</p>
+        <Link to="/friends/{person.id}">
+            <p>{person.name}</p>
+        </Link>
         <h3>Age</h3>
         <p>{person.age}</p>
     </div>
 </div>
 
 <script>
+import { Link } from 'svelte-navigator';
 import ProfilePic from './ProfilePic.svelte';
 
 export let person;
