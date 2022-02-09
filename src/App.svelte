@@ -13,6 +13,9 @@
         <Route path="/friends/:friendId">
             <FriendDetailPage />
         </Route>
+        <Route>
+            <NotFoundPage />
+        </Route>
     </div>
 </Router>
 
@@ -21,6 +24,7 @@ import { Router, Route, Link } from 'svelte-navigator';
 import FriendsPage from './pages/FriendsPage.svelte';
 import FriendDetailPage from './pages/FriendDetailPage.svelte';
 import UserProfilePage from './pages/UserProfilePage.svelte';
+import NotFoundPage from './pages/NotFoundPage.svelte';
 </script>
 
 <style>

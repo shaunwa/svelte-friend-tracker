@@ -4,19 +4,22 @@
 <div class="people-list">
     <PeopleList
         people={favorites}
-        namesOfFavorites={namesOfFavorites}
-        on:personClick={event => toggleFavorite(event.detail)} />
+        actionText="Remove from Favorites"
+        on:personClick={event => goToFriendDetailPage(event.detail)}
+        on:personActionClick={event => toggleFavorite(event.detail)} />
 </div>
 <button on:click={resetFavorites}>Clear Favorites</button>
 <h2>Other Friends</h2>
 <div class="people-list">
     <PeopleList
         people={nonFavorites}
-        namesOfFavorites={namesOfFavorites}
-        on:personClick={event => toggleFavorite(event.detail)} />
+        actionText="Add to Favorites"
+        on:personClick={event => goToFriendDetailPage(event.detail)}
+        on:personActionClick={event => toggleFavorite(event.detail)} />
 </div> 
 
 <script>
+import { navigate } from 'svelte-navigator';
 import WelcomeMessage from '../WelcomeMessage.svelte';
 import PeopleList from '../PeopleList.svelte';
 import { friendsData } from '../data';
@@ -24,6 +27,10 @@ import { friendsData } from '../data';
 let namesOfFavorites = [];
 $: favorites = namesOfFavorites.map(name => friendsData.find(friend => friend.name === name)); 
 $: nonFavorites = friendsData.filter(friend => !namesOfFavorites.includes(friend.name));
+
+function goToFriendDetailPage(person) {
+    navigate(`/friends/${person.id}`);
+}
 
 function toggleFavorite(person) {
     if (namesOfFavorites.includes(person.name)) {

@@ -7,9 +7,7 @@
     </div>
     <div class="details-container">
         <h3>Name</h3>
-        <Link to="/friends/{person.id}">
-            <p>{person.name}</p>
-        </Link>
+        <p>{person.name}</p>
         <h3>Age</h3>
         <p>{person.age}</p>
     </div>

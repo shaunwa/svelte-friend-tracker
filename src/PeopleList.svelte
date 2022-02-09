@@ -4,6 +4,9 @@
         <ProfileInfoSmall
             person={person}
             on:click={() => cardClicked(person)} />
+        {#if actionText}
+        <button on:click={() => buttonClicked(person)}>{actionText}</button>
+        {/if}
     </div>
 </div>
 {/each}
@@ -15,9 +18,14 @@ import ProfileInfoSmall from './ProfileInfoSmall.svelte';
 const dispatch = createEventDispatcher();
 
 export let people;
+export let actionText;
 
 function cardClicked(person) {
     dispatch('personClick', person);
+}
+
+function buttonClicked(person) {
+    dispatch('personActionClick', person);
 }
 </script>
 
