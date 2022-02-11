@@ -5,6 +5,9 @@
     <Link to="/profile">My Profile</Link>
     <div class="content-container">
         <Route path="/">
+            <Redirect to="/friends" />
+        </Route>
+        <Route path="/friends">
             <FriendsPage />
         </Route>
         <Route path="/profile">
@@ -25,6 +28,7 @@ import FriendsPage from './pages/FriendsPage.svelte';
 import FriendDetailPage from './pages/FriendDetailPage.svelte';
 import UserProfilePage from './pages/UserProfilePage.svelte';
 import NotFoundPage from './pages/NotFoundPage.svelte';
+import Redirect from './Redirect.svelte';
 </script>
 
 <style>

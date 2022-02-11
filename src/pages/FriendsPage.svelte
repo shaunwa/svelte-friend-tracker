@@ -1,6 +1,6 @@
 <WelcomeMessage name="Shaun" />
 <h2>My Favorites</h2>
-<p>You have selected {namesOfFavorites.length} favorites</p>
+<p>You have selected {favorites.length} favorites</p>
 <div class="people-list">
     <PeopleList
         people={favorites}
@@ -19,29 +19,46 @@
 </div> 
 
 <script>
+import { onMount } from 'svelte';
 import { navigate } from 'svelte-navigator';
 import WelcomeMessage from '../WelcomeMessage.svelte';
 import PeopleList from '../PeopleList.svelte';
 import { friendsData } from '../data';
 
-let namesOfFavorites = [];
-$: favorites = namesOfFavorites.map(name => friendsData.find(friend => friend.name === name)); 
-$: nonFavorites = friendsData.filter(friend => !namesOfFavorites.includes(friend.name));
+let favoritesIdsLoaded = false;
+let favoritesIds = [];
+
+$: favorites = favoritesIds.map(id => friendsData.find(friend => friend.id === id)); 
+$: nonFavorites = friendsData.filter(friend => !favoritesIds.includes(friend.id));
+
+$: favoritesIds, persistFavoritesIds();
+
+function persistFavoritesIds() {
+    if (favoritesIdsLoaded) {
+        console.log('Updating...');
+        localStorage.setItem('favoritesIds', JSON.stringify(favoritesIds));
+    }
+}
+
+onMount(() => {
+    favoritesIds = JSON.parse(localStorage.getItem('favoritesIds')) || [];
+    favoritesIdsLoaded = true;
+});
 
 function goToFriendDetailPage(person) {
     navigate(`/friends/${person.id}`);
 }
 
 function toggleFavorite(person) {
-    if (namesOfFavorites.includes(person.name)) {
-        namesOfFavorites = namesOfFavorites.filter(name => name !== person.name);
+    if (favoritesIds.includes(person.id)) {
+        favoritesIds = favoritesIds.filter(id => id !== person.id);
     } else {
-        namesOfFavorites = namesOfFavorites.concat(person.name);
+        favoritesIds = favoritesIds.concat(person.id);
     }
 }
 
 function resetFavorites() {
-    namesOfFavorites = [];
+    favoritesIds = [];
 }
 </script>
 
