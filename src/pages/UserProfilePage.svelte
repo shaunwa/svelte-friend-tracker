@@ -1,6 +1,7 @@
-<ProfileInfo person={myProfileData} />
+<ProfileInfo person={user} />
 
 <script>
 import ProfileInfo from '../ProfileInfo.svelte';
-import { myProfileData } from '../data';
+
+export let user;
 </script>

@@ -1,4 +1,4 @@
-<WelcomeMessage name="Shaun" />
+<WelcomeMessage name={user.name} />
 <h2>My Favorites</h2>
 <p>You have selected {favorites.length} favorites</p>
 <div class="people-list">
@@ -6,59 +6,35 @@
         people={favorites}
         actionText="Remove from Favorites"
         on:personClick={event => goToFriendDetailPage(event.detail)}
-        on:personActionClick={event => toggleFavorite(event.detail)} />
+        on:personActionClick={event => dispatch('toggleFavorite', event.detail)} />
 </div>
-<button on:click={resetFavorites}>Clear Favorites</button>
+<button on:click={() => dispatch('resetFavorites')}>Clear Favorites</button>
 <h2>Other Friends</h2>
 <div class="people-list">
     <PeopleList
         people={nonFavorites}
         actionText="Add to Favorites"
         on:personClick={event => goToFriendDetailPage(event.detail)}
-        on:personActionClick={event => toggleFavorite(event.detail)} />
+        on:personActionClick={event => dispatch('toggleFavorite', event.detail)} />
 </div> 
 
 <script>
-import { onMount } from 'svelte';
+import { createEventDispatcher } from 'svelte';
 import { navigate } from 'svelte-navigator';
 import WelcomeMessage from '../WelcomeMessage.svelte';
 import PeopleList from '../PeopleList.svelte';
-import { friendsData } from '../data';
 
-let favoritesIdsLoaded = false;
-let favoritesIds = [];
+const dispatch = createEventDispatcher();
 
-$: favorites = favoritesIds.map(id => friendsData.find(friend => friend.id === id)); 
-$: nonFavorites = friendsData.filter(friend => !favoritesIds.includes(friend.id));
+export let favoritesIds;
+export let friends;
+export let user;
 
-$: favoritesIds, persistFavoritesIds();
-
-function persistFavoritesIds() {
-    if (favoritesIdsLoaded) {
-        console.log('Updating...');
-        localStorage.setItem('favoritesIds', JSON.stringify(favoritesIds));
-    }
-}
-
-onMount(() => {
-    favoritesIds = JSON.parse(localStorage.getItem('favoritesIds')) || [];
-    favoritesIdsLoaded = true;
-});
+$: favorites = favoritesIds.map(id => friends.find(friend => friend.id === id)); 
+$: nonFavorites = friends.filter(friend => !favoritesIds.includes(friend.id));
 
 function goToFriendDetailPage(person) {
     navigate(`/friends/${person.id}`);
-}
-
-function toggleFavorite(person) {
-    if (favoritesIds.includes(person.id)) {
-        favoritesIds = favoritesIds.filter(id => id !== person.id);
-    } else {
-        favoritesIds = favoritesIds.concat(person.id);
-    }
-}
-
-function resetFavorites() {
-    favoritesIds = [];
 }
 </script>
 
